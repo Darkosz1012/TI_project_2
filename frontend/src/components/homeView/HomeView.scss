@@ -1,0 +1,38 @@
+.HomeView{
+    width: 100vw;
+    height: 100vh;
+    &__content{
+        padding: 1rem;
+
+        
+    }
+
+    &__side-panel{
+        width: 15rem;
+        max-width: 15%;
+        & > *{
+            margin: .3rem;
+            width: 100%;
+        }
+    }
+
+    &__chat{
+        position: absolute;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+
+        width: 50rem;
+        max-width: 80%;
+        height: 80vh;
+    }
+
+    @media (max-width: 1300px) {
+        &__chat{
+            left: auto;
+            right: 1rem;
+            transform: translate(0,-50%);
+        }
+    }
+
+}
