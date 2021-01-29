@@ -74,7 +74,6 @@ router.post('/', auth ,async (req, res) => {
 
 router.post('/:id', auth ,async (req, res) => {
     const { message, password } = req.body;
-    console.log(req.body)
     try{
         // const pass = await Room.findById(req.params.id).select('+password');
         // if(pass.password == password){
@@ -83,7 +82,6 @@ router.post('/:id', auth ,async (req, res) => {
                 { _id: req.params.id }, 
                 { $push: { messages : message } }
             );
-            console.log(result)
             res.json({
                 success: true,
                 message: 'Command executed.',

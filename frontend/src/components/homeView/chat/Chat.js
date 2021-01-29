@@ -3,10 +3,12 @@ import {ListGroup} from 'react-bootstrap';
 
 import {UserId, authFetch } from "../../../util/authProvider";
 
+import {useAlert} from 'react-alert';
+
 import "./Chat.scss";
 
 export function Chat(props) {
-
+    const alert = useAlert();
     // const [password, setPassword] = useState("")
     const [messages, setMessages] = useState([])
     const [input, setInput] = useState("")
@@ -35,7 +37,7 @@ export function Chat(props) {
             })).json();
             
         }catch(err){
-            console.log(err);
+            alert.error("Błąd połączenia z serwerem spróbuj ponownie później.")
             var key = props.id+UserId.getId();
             var arr = JSON.parse(localStorage.getItem(key));
             arr = arr == null ? [] : arr;
@@ -72,12 +74,13 @@ export function Chat(props) {
 
 
     useEffect(async() => {
-        setMessages([])
         clearInterval(intervalRef.current);
+        setMessages([])
         getFromStorage()
         if(props.id!=""){
-            const res = await getMessages();
-            setMessages(res.res.messages);
+            getMessages().then(res=>{
+                setMessages(res.res.messages);
+            })
             intervalRef.current = setInterval(async()=>{
                 const res = await getMessages();
                 setMessages(res.res.messages);
@@ -95,7 +98,6 @@ export function Chat(props) {
             </div>
         )
     }else{
-        console.log(store)
         return (
             <div className="Chat">
                 <div className="form-control Chat__content">

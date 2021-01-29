@@ -23,9 +23,7 @@ export var UserId = (function () {
 
     if(localStorage.getItem("REACT_TOKEN_AUTH_KEY")){
         var tokens = JSON.parse(localStorage.getItem("REACT_TOKEN_AUTH_KEY"))
-        console.log(tokens.accessToken)
         _id = decodeToken(tokens.accessToken).id;
-        console.log(_id);
     }
 
     return {

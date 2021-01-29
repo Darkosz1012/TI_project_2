@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/913ad82d-ed0f-4056-a477-2a90432e112a/resourceGroups/ti-proj2-dbiela/providers/Microsoft.Web/sites/ti-proj2-dbiela",
+    "appService.deploySubpath": "."
+}

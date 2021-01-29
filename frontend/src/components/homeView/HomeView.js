@@ -13,7 +13,6 @@ export default function HomeView() {
     const [RoomId, setRoomId] = useState("")
 
     const setChat = (id)=>{
-        console.log(id);
         setRoomId(id)
     }
 

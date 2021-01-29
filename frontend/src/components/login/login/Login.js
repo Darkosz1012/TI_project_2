@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { login , UserId} from "../../../util/authProvider";
 import { Form , Button } from 'react-bootstrap';
 import { decodeToken } from "react-jwt";
+import { useAlert } from 'react-alert'
 
 export default function Login() {
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
-
+    const alert = useAlert();
     const handleSubmit = async e => {
         e.preventDefault();
         fetch('/api/login', {
@@ -20,7 +21,11 @@ export default function Login() {
             .then(({ token }) => {
                 if(token){
                     UserId.setId(decodeToken(token.accessToken).id)
+                    alert.success('Zalogowano.')
+                }else{
+                    alert.error('Błędna nawzwa użytkownika lub hasło.')
                 }   
+
                 login(token)
             });
     }

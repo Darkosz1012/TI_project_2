@@ -8,10 +8,10 @@ const app = express()
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3001
 
 mountRoutes(app)
-app.use(express.static('../frontend/build'))
+app.use(express.static('./frontend/build'))
 
 const jwt = require("jsonwebtoken");
 (async function run () {
